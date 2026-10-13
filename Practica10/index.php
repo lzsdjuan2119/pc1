@@ -30,7 +30,5 @@
             <option value="Japón">Japón</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Guardar lote</button>
+    <button type="submit" class="btn btn-primary">Registrar Lote</button>
 </form>
-<a href="reporte.php" class="btn btn-outline-secondary">Ver Reporte</a>
-<?php echo "</div></body></html>"; ?>

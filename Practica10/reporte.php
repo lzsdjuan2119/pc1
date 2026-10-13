@@ -2,7 +2,6 @@
 <h2 class="mb-4">Reporte de Exportaciones</h2>
 <?php
 $lotes = [];
-$archivo = 'exportaciones.txt';
 
 if (file_exists($archivo)) {
     $lineas = file($archivo, FILE_IGNORE_NEW_LINES);
