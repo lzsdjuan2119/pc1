@@ -9,7 +9,7 @@
         <label>Nombre del paciente:</label><br>
         <input type="text" name="nombre" required><br><br>
         <label>Edad del paciente:</label><br>
-        <input type="number" name="edad" min="0" required><br><br>
+        <input type="number" name="edad" min="10" max="80" required><br><br>
         <label>Vacuna a aplicar:</label><br>
         <select name="vacuna" required>
             <option value="">Seleccione</option>
@@ -17,6 +17,7 @@
             <option value="Sarampion">Sarampión</option>
             <option value="COVID-19">COVID-19</option>
             <option value="Hepatitis B">Hepatitis B</option>
+            <option value="laura">laura</option>
         </select><br><br>
         <input type="submit" value="Evaluar">
     </form>

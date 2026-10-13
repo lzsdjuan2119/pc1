@@ -12,7 +12,7 @@ echo "<p><strong>Asistencia:</strong> $asistencia%</p>";
 if ($promedio >= 13 && $asistencia >= 70) {
     echo "<p style='color:green;'><strong>Estado:</strong> Aprobado</p>";
 } elseif ($promedio >= 13 && $asistencia < 70) {
-    echo "<p style='color:orange;'><strong>Estado:</strong> Desaprobado por inasistencia</p>";
+    echo "<p style='color:orange;'><strong>Estado:</strong> Desaprobado por laura</p>";
 } else {
     echo "<p style='color:red;'><strong>Estado:</strong> Igual de burro que Laura</p>";
 }
