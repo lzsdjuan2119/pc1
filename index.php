@@ -30,6 +30,9 @@
                 <a href="ejercicio6/index.php" class="list-group-item list-group-item-action">
                     <strong>Ejercicio 6:</strong> Evaluación de Rendimiento Académico
                 </a>
+                <a href="Practica10/index.php" class="list-group-item list-group-item-action list-group-item-success">
+                    <strong>Casuística Calificada:</strong> Sistema de Registro y Evaluación de Exportación Agrícola (AndesPerú Export S.A.C.)
+                </a>
             </div>
         </div>
     </div>
