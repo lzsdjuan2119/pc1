@@ -17,7 +17,6 @@
             <option value="Sarampion">Sarampión</option>
             <option value="COVID-19">COVID-19</option>
             <option value="Hepatitis B">Hepatitis B</option>
-            <option value="laura">laura</option>
         </select><br><br>
         <input type="submit" value="Evaluar">
     </form>
