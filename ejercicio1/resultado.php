@@ -14,6 +14,6 @@ if ($promedio >= 13 && $asistencia >= 70) {
 } elseif ($promedio >= 13 && $asistencia < 70) {
     echo "<p style='color:orange;'><strong>Estado:</strong> Desaprobado por inasistencia</p>";
 } else {
-    echo "<p style='color:red;'><strong>Estado:</strong> Desaprobado</p>";
+    echo "<p style='color:red;'><strong>Estado:</strong> Igual de burro que Laura</p>";
 }
 ?>
