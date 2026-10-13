@@ -2,23 +2,19 @@
 <h2 class="mb-4">Reporte de Exportaciones</h2>
 <?php
 $lotes = [];
-
+$archivo = 'exportaciones.txt';
 if (file_exists($archivo)) {
     $lineas = file($archivo, FILE_IGNORE_NEW_LINES);
     foreach ($lineas as $linea) {
-        if (empty(trim($linea))) continue;
         list($producto, $cantidad, $precio, $pais) = explode(",", $linea);
-        $total_lote = floatval($cantidad) * floatval($precio);
         $lotes[] = [
-            "producto" => trim($producto),
+            "producto" => $producto,
             "cantidad" => floatval($cantidad),
-            "precio"   => floatval($precio),
-            "pais"     => trim($pais),
-            "total"    => $total_lote
+            "precio" => floatval($precio),
+            "pais" => $pais
         ];
     }
 }
-
 $total_acumulado = 0;
 $alta_exportacion = 0;
 $destinos_especiales = 0;
@@ -28,7 +24,7 @@ $destinos_especiales = 0;
         <tr>
             <th>Producto</th>
             <th>Cantidad (kg)</th>
-            <th>Precio/kg</th>
+            <th>Precio por kilo</th>
             <th>Total</th>
             <th>País</th>
             <th>Alta Exportación</th>
@@ -37,29 +33,39 @@ $destinos_especiales = 0;
     </thead>
     <tbody>
         <?php foreach ($lotes as $l): 
-            $total_acumulado += $l["total"];
+            $total_lote = $l["cantidad"] * $l["precio"];
+            $total_acumulado += $total_lote;
 
-            // Lotes mayores a 1000 kg
-            $es_alta = ($l["cantidad"] > 1000) ? "Sí" : "No";
-            if ($l["cantidad"] > 1000) $alta_exportacion++;
+            if ($l["cantidad"] > 1000) {
+                $alta = "Sí";
+                $color_alta = "text-success";
+                $alta_exportacion++;
+            } else {
+                $alta = "No";
+                $color_alta = "text-muted";
+            }
 
-            // Destinos especiales (EE.UU. o Alemania)
-            $es_especial = ($l["pais"] == "EE.UU." || $l["pais"] == "Alemania") ? "Sí" : "No";
-            if ($es_especial == "Sí") $destinos_especiales++;
+            if ($l["pais"] == "EE.UU." || $l["pais"] == "Alemania") {
+                $especial = "Sí";
+                $color_esp = "text-primary";
+                $destinos_especiales++;
+            } else {
+                $especial = "No";
+                $color_esp = "text-muted";
+            }
         ?>
         <tr>
             <td><?php echo $l["producto"]; ?></td>
-            <td><?php echo $l["cantidad"]; ?> kg</td>
+            <td><?php echo $l["cantidad"]; ?></td>
             <td>S/ <?php echo $l["precio"]; ?></td>
-            <td>S/ <?php echo $l["total"]; ?></td>
+            <td>S/ <?php echo $total_lote; ?></td>
             <td><?php echo $l["pais"]; ?></td>
-            <td class="<?php echo ($es_alta == 'Sí') ? 'text-success fw-bold' : ''; ?>"><?php echo $es_alta; ?></td>
-            <td class="<?php echo ($es_especial == 'Sí') ? 'text-primary fw-bold' : ''; ?>"><?php echo $es_especial; ?></td>
+            <td class="<?php echo $color_alta; ?>"><?php echo $alta; ?></td>
+            <td class="<?php echo $color_esp; ?>"><?php echo $especial; ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-
 <?php if (count($lotes) > 0): ?>
 <div class="alert alert-info">
     <p><strong>Valor total exportado acumulado:</strong> S/ <?php echo round($total_acumulado, 2); ?></p>
@@ -67,8 +73,7 @@ $destinos_especiales = 0;
     <p><strong>Lotes a EE.UU. o Alemania (destinos especiales):</strong> <?php echo $destinos_especiales; ?></p>
 </div>
 <?php else: ?>
-<div class="alert alert-warning">Aún no se han registrado lotes.</div>
+<div class="alert alert-warning">Aún no se han registrado lotes de exportación.</div>
 <?php endif; ?>
-
 <a href="index.php" class="btn btn-secondary">Registrar otro lote</a>
 <?php echo "</div></body></html>"; ?>

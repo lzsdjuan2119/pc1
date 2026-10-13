@@ -1,0 +1,5 @@
+Quinua,1200,5.5,EE.UU.
+Maíz morado,800,3.2,España
+Papa nativa,1500,4,Alemania
+Tarwi,600,6,Canadá
+Quinua,1100,5.8,Alemania
